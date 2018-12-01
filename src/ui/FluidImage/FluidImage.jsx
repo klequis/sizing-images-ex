@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { compose } from 'recompose'
 import injectSheet from 'react-jss'
-import withBreakpoint from 'ui/withBreakpoint'
+import withBreakpoints from 'ui/withBreakpoints'
 
 const tmp = [
   {

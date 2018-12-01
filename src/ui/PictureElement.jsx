@@ -1,23 +1,19 @@
 import React from 'react'
 import injectSheet from 'react-jss'
-import iRidingXS from 'media/riding-xs.jpg'
-import iRidingSM from 'media/riding-sm.jpg'
-import iRidingMD from 'media/riding-md.jpg'
-import ResponsiveImage from 'ui/ResponsiveImage'
+import { breakpoints } from 'ui/breakpoints'
 
-const PictureElement = ({ classes }) => {
+const PictureElement = ({ classes, images }) => {
   return (
     <div className={classes.wrapper}>
       <picture>
-        <source srcSet={iRidingXS} media="(max-width: 360px)" />
-        <source srcSet={iRidingSM} media="(max-width: 736px)" />
-        <img srcSet={iRidingMD} className={classes.fluid} alt="MDN" />
+        <source srcSet={images[0]} media={`(max-width: ${breakpoints.sm}px)`} />
+        <source srcSet={images[1]} media={`(max-width: ${breakpoints.md}px)`} />
+        <source srcSet={images[2]} media={`(max-width: ${breakpoints.lg}px)`} />
+        <img srcSet={images[2]} className={classes.fluid} alt="MDN" />
       </picture>
     </div>
   )
 }
-
-// <ResponsiveImage src={iRidingMD} alt="MDN" />
 
 const styles = theme => ({
   wrapper: {

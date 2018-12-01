@@ -3,7 +3,7 @@ import { compose } from 'recompose'
 import injectSheet from 'react-jss'
 import Text from 'ui/Text'
 import ResponsiveImage from 'ui/ResponsiveImage'
-import withBreakpoint from 'ui/withBreakpoint'
+import withBreakpoints from 'ui/withBreakpoints'
 // import iRiding from 'media/riding.jpg'
 import iRiding01 from 'media/riding-md.jpg'
 // import iRiding02 from 'media/riding-xs.compress50p.jpg'
@@ -53,7 +53,7 @@ const styles = theme => ({
 })
 
 export default compose(
-  withBreakpoint,
+  withBreakpoints,
   injectSheet(styles)
 )(Responsive)
 

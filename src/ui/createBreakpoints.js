@@ -1,45 +1,32 @@
+
+// borrowed from http://material-ui.com
+
 // Sorted ASC by size. That's important.
 // It can't be configured as it's used statically for propTypes.
-export const keys = ['xs', 'sm', 'md', 'lg', 'xl']
-export const values = {
-  xs: 0,
-  sm: 360,
-  md: 736,
-  lg: 1280,
-  xl: 1680,
-}
+import { breakpointValues } from 'ui/breakpoints'
+import { breakpointKeys } from 'ui/breakpoints'
+
+
 // Keep in mind that @media is inclusive by the CSS specification.
 export default function createBreakpoints(breakpoints) {
   const {
     // The breakpoint **start** at this value.
     // For instance with the first breakpoint xs: [xs, sm[.
-
-    // move values to exportable const so can be used
-    // more easily by other modules
-    // values = {
-    //   xs: 0,
-    //   sm: 360,
-    //   md: 736,
-    //   lg: 1280,
-    //   xl: 1680,
-    // },
-
-
     unit = 'px',
     step = 5,
     ...other
   } = breakpoints
 
   function up(key) {
-    const value = typeof values[key] === 'number' ? values[key] : key
+    const value = typeof breakpointValues[key] === 'number' ? breakpointValues[key] : key
     return `@media (min-width:${value}${unit})`
   }
 
   function down(key) {
-    const endIndex = keys.indexOf(key) + 1
-    const upperbound = values[keys[endIndex]]
+    const endIndex = breakpointKeys.indexOf(key) + 1
+    const upperbound = breakpointValues[breakpointKeys[endIndex]]
 
-    if (endIndex === keys.length) {
+    if (endIndex === breakpointKeys.length) {
       // xl down applies to all sizes
       return up('xs')
     }
@@ -49,14 +36,14 @@ export default function createBreakpoints(breakpoints) {
   }
 
   function between(start, end) {
-    const endIndex = keys.indexOf(end) + 1
-    if (endIndex === keys.length) {
+    const endIndex = breakpointKeys.indexOf(end) + 1
+    if (endIndex === breakpointKeys.length) {
       return up(start)
     }
 
     return (
-      `@media (min-width:${values[start]}${unit}) and ` +
-      `(max-width:${values[keys[endIndex]] - step / 100}${unit})`
+      `@media (min-width:${breakpointValues[start]}${unit}) and ` +
+      `(max-width:${breakpointValues[breakpointKeys[endIndex]] - step / 100}${unit})`
     )
   }
 
@@ -65,12 +52,12 @@ export default function createBreakpoints(breakpoints) {
   }
 
   function width(key) {
-    return values[key]
+    return breakpointValues[key]
   }
 
   return {
-    keys,
-    values,
+    breakpointKeys,
+    breakpointValues,
     up,
     down,
     between,

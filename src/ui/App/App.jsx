@@ -4,10 +4,8 @@ import injectSheet from 'react-jss'
 import ImageXS from 'ui/ImageXS'
 import ImageSM from 'ui/ImageSM'
 import ImageMD from 'ui/ImageMD'
-// import ImageLG from 'ui/ImageLG'
 import PictureElement from 'ui/PictureElement'
-import { keys } from 'ui/createBreakpoints'
-
+import Home from 'ui/Home'
 class App extends React.Component {
   state = {
     currBreakpoint: 'xs',
@@ -42,7 +40,7 @@ class App extends React.Component {
           </select>
         </nav> */}
         <Switch>
-          <Route exact path='/' component={PictureElement} />
+          <Route exact path='/' component={Home} />
           <Route path='/xs' component={ImageXS} />
           <Route path='/sm' component={ImageSM} />
           <Route path='/md' component={ImageMD} />

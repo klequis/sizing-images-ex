@@ -2,12 +2,8 @@ import React from 'react'
 import { compose } from 'recompose'
 import injectSheet from 'react-jss'
 import Text from 'ui/Text'
-import ResponsiveImage from 'ui/ResponsiveImage'
-import withBreakpoint from 'ui/withBreakpoint'
-// import iRiding from 'media/riding.jpg'
+import withBreakpoints from 'ui/withBreakpoints'
 import iRiding01 from 'media/riding-xs.jpg'
-// import iRiding02 from 'media/riding-xs.compress50p.jpg'
-
 import FileSpec from 'ui/FileSpec'
 
 const Responsive = ({ classes, breakpoint }) => {
@@ -54,7 +50,7 @@ const styles = theme => ({
 })
 
 export default compose(
-  withBreakpoint,
+  withBreakpoints,
   injectSheet(styles)
 )(Responsive)
 
